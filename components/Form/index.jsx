@@ -8,11 +8,11 @@ const Login = () => {
   const {handleSignIn, GoogleLogin, error, setError, user, setUser} = useAuth();
 
   useEffect(() => {
-    const clearTimeout = setTimeout(() => {
+    const clearTimer = setTimeout(() => {
       setError(false);
     }, 7000);
     return () => {
-      clearTimeout;
+      clearTimeout(clearTimer);
     };
   }, [error]);
 

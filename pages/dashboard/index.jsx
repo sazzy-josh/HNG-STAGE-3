@@ -20,17 +20,14 @@ export default function Dashboard() {
   const {user, setUser} = useAuth();
   const router = useRouter();
 
+  //Keeps track of authentication
   useEffect(() => {
     const token = localStorage.getItem("user")
       ? JSON.parse(localStorage.getItem("user"))
       : null;
     setUser(token);
-    console.log(token);
 
-    if (user === null) {
-      router.push("/");
-      return;
-    }
+    !token ? router.push("/") : router.push("/dashboard");
   }, []);
 
   useEffect(() => {
