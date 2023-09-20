@@ -18,9 +18,9 @@ export default function Card({src, tag, id}) {
       {...listeners}
       className='flex justify-center items-center w-full h-full'
     >
-      <div class='lg:w-[250px] lg:h-[300px] w-full h-full bg-white border border-gray-200 rounded-lg shadow cursor-grab'>
+      <div class='w-[180px] h-[150px] md:w-[250px] lg:h-[300px] bg-white border border-gray-200 rounded-lg shadow cursor-grab'>
         <img
-          class='rounded-t-lg w-full h-[250px] md:h-[200px]  object-cover'
+          class='rounded-t-lg w-full h-[100px] md:h-[200px]  object-cover'
           src={src}
           alt={`image-${tag}`}
         />
