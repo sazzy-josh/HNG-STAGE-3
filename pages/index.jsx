@@ -1,9 +1,6 @@
 import Head from "next/head";
 import {Inter} from "next/font/google";
-import ProtectedRoute from "@/components/ProtectedRoute";
 import Login from "@/components/Form";
-import {useContext, useEffect} from "react";
-import {AuthContext} from "@/context/auth";
 
 const inter = Inter({subsets: ["latin"]});
 
