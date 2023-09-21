@@ -25,7 +25,7 @@ import {useRouter} from "next/router";
 export default function Dashboard() {
   const [searchQuery, setSearchQuery] = useState("");
   const [items, setItems] = useState([]);
-  const [isloading, setIsloading] = useState(false);
+  const [isloading, setIsloading] = useState(true);
   const {user, setUser} = useAuth();
   const [currentId, setCurrentId] = useState(null);
   const [shadow, setShadow] = useState(false);
@@ -48,7 +48,6 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-    setIsloading(true);
     let filteredItems = imagesDb?.filter((img) => {
       const tag = img.tag;
       return tag.toLowerCase().includes(searchQuery.toLowerCase());
