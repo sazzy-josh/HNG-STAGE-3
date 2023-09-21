@@ -2,7 +2,15 @@ import Card from "@/components/Card";
 import Layout from "@/components/layout";
 import {imagesDb} from "@/db/data";
 import {useEffect, useState} from "react";
-import {DndContext, closestCenter} from "@dnd-kit/core";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  MouseSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
 import {
   arrayMove,
   SortableContext,
@@ -20,6 +28,11 @@ export default function Dashboard() {
   const {user, setUser} = useAuth();
   const router = useRouter();
 
+  const mouseSensor = useSensor(MouseSensor);
+  const touchSensor = useSensor(TouchSensor);
+  const keyboardSensor = useSensor(KeyboardSensor);
+
+  const sensors = useSensors(mouseSensor, touchSensor, keyboardSensor);
   //Keeps track of authentication
   useEffect(() => {
     const token = localStorage.getItem("user")
@@ -81,6 +94,7 @@ export default function Dashboard() {
             <>
               {items.length != 0 ? (
                 <DndContext
+                  sensors={sensors}
                   collisionDetection={closestCenter}
                   onDragEnd={handleDragEnd}
                 >
