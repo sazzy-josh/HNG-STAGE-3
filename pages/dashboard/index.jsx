@@ -13,6 +13,7 @@ import {
 } from "@dnd-kit/core";
 import {
   arrayMove,
+  rectSwappingStrategy,
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
@@ -101,7 +102,7 @@ export default function Dashboard() {
                   <div className='grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5 gap-y-4 md:gap-y-2 min-h-screen w-90 py-20 px-10 border rounded-lg mx-auto'>
                     <SortableContext
                       items={items}
-                      strategy={verticalListSortingStrategy}
+                      strategy={rectSwappingStrategy}
                     >
                       {items.map((item) => {
                         return <Card {...item} key={item.id} id={item.id} />;
