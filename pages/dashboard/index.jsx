@@ -54,7 +54,7 @@ export default function Dashboard() {
       return tag.toLowerCase().includes(searchQuery.toLowerCase());
     });
     setItems(filteredItems);
-    const clearTimer = setTimeout(() => setIsloading(false), 3000);
+    const clearTimer = setTimeout(() => setIsloading(false), 1500);
 
     return () => clearTimeout(clearTimer);
   }, [searchQuery]);
