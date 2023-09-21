@@ -6,6 +6,7 @@ import Link from "next/link";
 
 const Login = () => {
   const {handleSignIn, GoogleLogin, error, setError, user, setUser} = useAuth();
+  const [showIcon, setShowIcon] = useState(false);
 
   useEffect(() => {
     const clearTimer = setTimeout(() => {
@@ -93,7 +94,7 @@ const Login = () => {
                 onChange={handleInput}
               />
             </div>
-            <div>
+            <div className='relative'>
               <label
                 class='text-gray-600 font-bold inline-block pb-2'
                 for='password'
@@ -102,13 +103,24 @@ const Login = () => {
               </label>
               <input
                 class='border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2'
-                type='password'
+                type={showIcon ? "text" : "password"}
                 name='password'
                 value={values.password}
                 required
                 placeholder='******'
                 onChange={handleInput}
               />
+              <svg
+                width='24'
+                height='24'
+                xmlns='http://www.w3.org/2000/svg'
+                fill-rule='evenodd'
+                clip-rule='evenodd'
+                className='absolute right-2 top-9 cursor-pointer'
+                onClick={() => setShowIcon((prev) => !prev)}
+              >
+                <path d='M12.01 20c-5.065 0-9.586-4.211-12.01-8.424 2.418-4.103 6.943-7.576 12.01-7.576 5.135 0 9.635 3.453 11.999 7.564-2.241 4.43-6.726 8.436-11.999 8.436zm-10.842-8.416c.843 1.331 5.018 7.416 10.842 7.416 6.305 0 10.112-6.103 10.851-7.405-.772-1.198-4.606-6.595-10.851-6.595-6.116 0-10.025 5.355-10.842 6.584zm10.832-4.584c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm0 1c2.208 0 4 1.792 4 4s-1.792 4-4 4-4-1.792-4-4 1.792-4 4-4z' />
+              </svg>
             </div>
             <div class='flex justify-center items-center'>
               <div class='w-1/2 flex items-center'>

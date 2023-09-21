@@ -84,7 +84,7 @@ export default function Dashboard() {
                   collisionDetection={closestCenter}
                   onDragEnd={handleDragEnd}
                 >
-                  <div className='grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5 items-center gap-y-4 md:gap-y-2 justify-center min-h-screen min-w-[] w-90 py-20 px-10 border rounded-lg mx-auto'>
+                  <div className='grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5 gap-y-4 md:gap-y-2 min-h-screen w-90 py-20 px-10 border rounded-lg mx-auto'>
                     <SortableContext
                       items={items}
                       strategy={verticalListSortingStrategy}
