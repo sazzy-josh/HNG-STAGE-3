@@ -48,12 +48,13 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
+    setIsloading(true);
     let filteredItems = imagesDb?.filter((img) => {
       const tag = img.tag;
       return tag.toLowerCase().includes(searchQuery.toLowerCase());
     });
     setItems(filteredItems);
-    const clearTimer = setTimeout(() => setIsloading(false), 1500);
+    const clearTimer = setTimeout(() => setIsloading(false), 3000);
 
     return () => clearTimeout(clearTimer);
   }, [searchQuery]);
