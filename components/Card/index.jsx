@@ -20,7 +20,9 @@ export default function Card({src, tag, id, currentId}) {
     >
       <div
         class={`w-[180px] h-[150px] md:w-[250px] lg:h-[300px] bg-white border border-gray-200 rounded-lg shadow cursor-grab ${
-          currentId === id ? "border-red-700" : ""
+          currentId === id
+            ? "border-grey-700 shadow-[5px_5px_0px_0px_rgba(109,40,217)] shadow-slate-950"
+            : ""
         }`}
       >
         <img

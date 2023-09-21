@@ -72,6 +72,7 @@ export default function Dashboard() {
 
   const handleDragEnd = (event) => {
     const {active, over} = event;
+    setCurrentId(null);
 
     if (active?.id !== over?.id) {
       const oldIndex = items.findIndex((item) => item?.id === active?.id);
