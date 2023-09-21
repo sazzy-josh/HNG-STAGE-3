@@ -72,7 +72,7 @@ export default function Dashboard() {
   return (
     <>
       <Layout>
-        <div className='p-4'>
+        <div className='p-4 bg-slate-200'>
           <div className='flex justify-center w-full h-20 p-4 relative top-[80px]'>
             <input
               class='border w-full md:w-4/12 border-gray-400 focus:outline-slate-400 rounded-md x shadow-sm px-5 py-2 '
