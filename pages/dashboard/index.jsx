@@ -27,6 +27,8 @@ export default function Dashboard() {
   const [items, setItems] = useState([]);
   const [isloading, setIsloading] = useState(false);
   const {user, setUser} = useAuth();
+  const [currentId, setCurrentId] = useState(null);
+  const [shadow, setShadow] = useState(false);
   const router = useRouter();
 
   const mouseSensor = useSensor(MouseSensor);
@@ -34,6 +36,7 @@ export default function Dashboard() {
   const keyboardSensor = useSensor(KeyboardSensor);
 
   const sensors = useSensors(mouseSensor, touchSensor, keyboardSensor);
+
   //Keeps track of authentication
   useEffect(() => {
     const token = localStorage.getItem("user")
@@ -58,6 +61,13 @@ export default function Dashboard() {
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
+  };
+
+  const getId = (event) => {
+    const {
+      active: {id},
+    } = event;
+    setCurrentId(id);
   };
 
   const handleDragEnd = (event) => {
@@ -97,15 +107,23 @@ export default function Dashboard() {
                 <DndContext
                   sensors={sensors}
                   collisionDetection={closestCenter}
+                  onDragStart={getId}
                   onDragEnd={handleDragEnd}
                 >
-                  <div className='grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5 gap-y-4 md:gap-y-2 min-h-screen w-90 py-20 px-10 border rounded-lg mx-auto'>
+                  <div className='grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5 gap-y-4 md:gap-y-2 min-h-screen w-90 py-20 px-10 border border-slate-300 shadow-md rounded-lg mx-auto'>
                     <SortableContext
                       items={items}
                       strategy={rectSwappingStrategy}
                     >
                       {items.map((item) => {
-                        return <Card {...item} key={item.id} id={item.id} />;
+                        return (
+                          <Card
+                            {...item}
+                            currentId={currentId}
+                            key={item.id}
+                            id={item.id}
+                          />
+                        );
                       })}
                     </SortableContext>
                   </div>

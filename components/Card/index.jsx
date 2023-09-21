@@ -1,7 +1,7 @@
 import {useSortable} from "@dnd-kit/sortable";
 import {CSS} from "@dnd-kit/utilities";
 
-export default function Card({src, tag, id}) {
+export default function Card({src, tag, id, currentId}) {
   const {attributes, listeners, setNodeRef, transform, transition} =
     useSortable({id: id});
 
@@ -18,7 +18,11 @@ export default function Card({src, tag, id}) {
       {...listeners}
       className='flex justify-center items-center w-full h-full'
     >
-      <div class='w-[180px] h-[150px] md:w-[250px] lg:h-[300px] bg-white border border-gray-200 rounded-lg shadow cursor-grab'>
+      <div
+        class={`w-[180px] h-[150px] md:w-[250px] lg:h-[300px] bg-white border border-gray-200 rounded-lg shadow cursor-grab ${
+          currentId === id ? "border-red-700" : ""
+        }`}
+      >
         <img
           class='rounded-t-lg w-full h-[100px] md:h-[200px] object-cover'
           src={src}
